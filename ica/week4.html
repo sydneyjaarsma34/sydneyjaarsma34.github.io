@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>   
+        html{
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            padding: 8px; /*8 on the top and bottom, 8 on the left and the right*/
+            margin: 32px; /* excluding the border */
+            color: #2f2d2e;
+        }
+        /*color boxes are a class*/
+        .color_box{
+            height: 75px; /*boxes of color will be 75px squares*/
+            width: 160px;
+        }
+        /* color pallate IDs **/
+        #orange{background-color: #f18f01;}
+        #pink{background-color: #982649;}
+        #blue{background-color: #aec5eb;}
+        #charcoal{background-color: #2e4057;}
+        #jet{background-color: #2f2d2e;}
+
+        /* text ids**/
+        button {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 16px;
+            background-color: #aec5eb;
+            border: 16px;
+        }
+        button:hover{
+            background-color: #f18f01;
+        }
+
+        p{
+            font-size: 16px;
+        }
+        .small_text{
+            font-size: 12px;
+        }
+        h3{
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: auto;
+            font-style: normal;
+            font-size: 20px;
+            color:#2e4057;
+        }
+        h2{
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: auto;
+            font-style: normal;
+            font-size: 24px;
+            color:#2e4057;
+        }
+        h1{
+            font-family: "Jost", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: auto;
+            font-style: normal;
+            font-size: 32px;
+            color:#2e4057;
+        }
+        /*for links*/
+        a{
+            text-decoration: none;
+            color: #982649;
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #f18f01;
+        }
+        a:visited{
+            color: #2e4057;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="color_box" id="orange">(1) Hex Code: f18f01 <br> Contrast Ratio: 8.66:1 on black text</div>
+    <div class="color_box" id="blue">(2) Hex Code: aec5eb<br> Contrast Ratio: 11.98:1 on black text</div>
+    <div class="color_box" id="pink"style="color: white">(3) Hex Code: 982649<br> Contrast Ratio: 7.75:1 on white text</div>
+    <div class="color_box" id="charcoal"style="color: white">(4) Hex Code: 2e4057<br> Contrast Ratio: 10.56:1 on white text</div>
+    <div class="color_box" id="jet"style="color: white">(5) Hex Code: 2f2d2e<br> Contrast Ratio: 13.67:1 on white text</div>
+
+    <h1>This is a heading</h1>
+    <h2>This is a heading</h2>
+    <h3>This is a heading</h3>
+
+    <p>This is paragraph text</p>
+    <p class="small_text">This is small text</p>
+
+    <p><a href="#">This is a link that goes nowhere</a></p>
+    <p><button href="#">This is a button that does nothing</button></p>
+
+    <h1>Design reflection</h1>
+    <h2>Identity and Culture</h2>
+        <p>I think my mostly cool toned color palatte generally represents a laid back and calmer energy, but my 
+            favorite part of the palatte is the bright orange color. Orange is my impractical favorite
+            color because it's so vibrant and generally associated with energy and fun in the west
+            which is the vibe I'm going for. As for the typography, I chose 2 fonts that are also more on the
+            calming, buisness side. I think this is good because it will (eventually) put more focus on 
+            my work and the color of the page, which I think are better representations of myself.
+        </p>
+    <h2>Accessibility considerations</h2>
+        <p> It was originally hard for me to find a color pallate that would work with white background since I 
+            plan on my pages being white/light colored. A lot of the colors that I wanted to use were not WCAG 
+            complient with white background. I ended up choosing 2 lighter colors and 3 darker colors to help with
+            maintaining that balance. 
+        </p>
+    <h2>Design Process</h2>
+        <p>What suprised me the most was having to think about the margins, borders, and padding. When designing
+            something, I have never really had to think about the number of pixels between the elements. I have 
+            always been able to click and drag my design elements on a page. When I start working on styling my 
+            portfolio project I want to play around with my text sizes and spacing to make it feel more like me.
+        </p>
+    <h2>Future Applications</h2>
+        <p> I might change any/all of the elements that I decided on today as I start to work on developing my 
+            site. It's hard to tell exaclty what will work in different contexts. It's really easy to change
+             things like text size or color when I need to. I don't know if anything feels really set in stone 
+             right now, but as I go on I think things like spacing and colors will be harder to change.
+        </p>
+
+</body>
+</html>
