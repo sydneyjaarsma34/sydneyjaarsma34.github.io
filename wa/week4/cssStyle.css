@@ -1,4 +1,4 @@
-#epicButton{
+.epicButton{
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -9,7 +9,7 @@
     padding: 12px 18px;
     margin: 10px 0px;
 }
-#epicButton:hover{
+.epicButton:hover{
     background-color: #701b35;
 }
 html{
