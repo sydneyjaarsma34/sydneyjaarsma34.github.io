@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 ICA</title>
+    <style>
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+	        align-items: center;
+            flex-wrap: wrap;           /* ← Allows cards to wrap to new rows */
+            gap: 1.5rem;              /* ← Consistent spacing between cards */
+            padding: 2rem;
+            background: #d4faff;
+        }
+
+        .card {
+            flex: 1 1 500px;          /* ← grow | shrink | basis (min-width) */
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .card p {
+            margin-bottom: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+        .expand-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%; /*50% makes a cirlce*/
+            border: none;
+            background-color: #1c7ddd;
+            color: white;
+            font-size: 18px;
+            cursor: pointer; /* makes the cursor change to the pointer thingy*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expand-btn:hover {
+            background-color: #004f9e;
+            transform: scale(1.1);
+        }
+
+        .expand-btn:active {
+            transform: scale(0.95);
+        }
+        .details{
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .details.show {
+            max-height: 500px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Community Garden Project</h3>
+                <button class="expand-btn" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p>Join neighbors in creating a shared growing space!</p>
+                <div class="details">
+                    <p>Meeting every Saturday at 10am. Tools provided. All skill levels welcome.</p>
+                    <p>Contact: garden@community.org</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Food Pantry</h3>
+                <button class="expand-btn" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Weekly distribution of fresh groceries and household essentials.</p>
+                <div class="details">
+                    <p>Every Wednesday and Saturday, families can receive fresh produce, canned goods, and basic supplies at the community center.</p>
+                    <p>Contact: pantry@community.org</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>After School Program</h3>
+                <button class="expand-btn" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Safe, supervised activities and homework help for students after school hours.</p>
+                <div class="details">
+                    <p>Available Monday through Friday from 3-6pm for elementary and middle school students. Snacks and tutoring provided.</p>
+                    <p>Contact: afterschool@community.org</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Senior Services</h3>
+                <button class="expand-btn" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Transportation, meal delivery, and social activities.</p>
+                <div class="details">
+                    <p>Includes weekly meal deliveries, community outings, and transportation for doctor visits.</p>
+                    <p>Contact: seniors@community.org</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Job Training</h3>
+                <button class="expand-btn" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Skills workshops and career counseling for those currently looking for jobs.</p>
+                <div class="details">
+                    <p>Workshops include resume building, interview prep, and computer literacy classes.</p>
+                    <p>Contact: jobs@community.org</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Health Clinic</h3>
+                <button class="expand-btn" aria-label="Expand card">+</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Basic medical services and wellness programs.</p>
+                <div class="details">
+                    <p>Volunteer nurses offer free checkups and wellness sessions twice weekly at the community center.</p>
+                    <p>Contact: clinic@community.org</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".expand-btn").forEach(button => {
+            button.addEventListener("click", () => {
+            const card = button.closest(".card");
+            const details = card.querySelector(".details");
+
+            if (details.style.maxHeight) {
+                // then collapse the text again
+                details.style.maxHeight = null;
+                button.textContent = "+";
+            } else {
+                // expand to exact content height of the card for each card
+                details.style.maxHeight = details.scrollHeight + "px";
+                button.textContent = "-";
+            }
+            });
+        });
+        });
+  </script>
+</body>
+</html>
