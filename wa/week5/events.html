@@ -25,5 +25,26 @@
         </section>
     </nav>
 
+
+
+
+
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // Toggle menu to spead its legs and close them on button click
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        //close menu if you click outside of it
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+            navMenu.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -60,6 +60,22 @@
     font-size: 18px;
     cursor: pointer;
   }
+  .nav-menu{
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;           /* Allows cards to wrap to new rows */   
+    padding: 1.5rem;
+    gap: 1.5rem; 
+    right: 1rem;
+    position: relative;
+    top: 100%;         /* drop down right below the nav bar */
+    left: 0;
+    width: 100%; 
+    }
+    .nav-menu.show {
+    display: flex;
+  }
 }
 .nav-toggle:hover {
     background-color: #0b006e;
