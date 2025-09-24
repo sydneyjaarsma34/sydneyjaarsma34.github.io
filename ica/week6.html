@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6</title>
+    <style>
+        .gallery-container{
+            display: grid; 
+            width: 650px;
+            grid-template-areas: 
+                "header header"
+                "nav sidebar"
+                "main sidebar"
+            ;
+            gap: 1rem;
+        }
+        .photo-card{
+            border: 2px solid black;
+            height: 200px;
+            width: 250px;
+        }
+        #one{background-color: red;}
+        #two{background-color: aqua;}
+        #three{background-color: pink;}
+        #four{background-color: greenyellow;}
+        #feature{background-color: blueviolet; 
+            grid-column: span 2;
+            width:auto;
+        }
+        #five{background-color: rgb(151, 101, 0);}
+        #six{background-color: orange;}
+        .gallery-header{
+            grid-area: header;
+        }
+        .gallery-grid{
+            grid-area: main;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-nav{
+            grid-area: nav;
+        }
+        .gallery-sidebar{
+            grid-area: sidebar;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <header class="gallery-header">Photo Gallery</header>
+        <nav class="gallery-nav">
+            <button>All</button>
+            <button>Nature</button>
+            <button>Architecture</button>
+            <button>Fashion</button>
+        </nav>
+        <main class="gallery-grid">
+            <div class="photo-card" id="one" data-category="nature">Photo 1</div>
+            <div class="photo-card" id="two" data-category="architecture">Photo 2</div>
+            <div class="photo-card" id="three" data-category="architecture">Photo 3</div>
+            <div class="photo-card" id="four" data-category="fasion">Photo 3</div>
+            <div class="photo-card featured" id="feature" data-category="nature">Featured Photo</div>
+            <div class="photo-card" id="five" data-category="fashion">Photo 5</div>
+            <div class="photo-card" id="six" data-category="nature">Photo 6</div>
+        </main>
+        <aside class="gallery-sidebar">Filter Options <p id="photo-counter"></p></aside>
+    </div>
+</body>
+
+<script>
+    const filterButtons = document.querySelectorAll('.gallery-nav button');
+    const photoCards = document.querySelectorAll('.photo-card');
+    const counter = document.getElementById('photo-counter');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+        const filterValue = event.target.textContent.toLowerCase();
+        filterPhotos(filterValue);
+        });
+    });
+
+
+
+    function filterPhotos(filterValue) {
+        let visibleCount = 0;
+
+        photoCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+
+            if (filterValue === 'all' || category === filterValue) {
+                card.style.display = 'block'; 
+                visibleCount++; // count visible cards
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // update counter text
+        counter.textContent = `Showing ${visibleCount} photos`;
+    }
+
+    // initialize counter on page load
+    filterPhotos('all');
+</script>
+</html>
+
+
+<!--3 column 2 row grid
+upper left corner starts at 0, then line 1, line 2 etc
+whole rows are row track 1, row track 2, etc-->
