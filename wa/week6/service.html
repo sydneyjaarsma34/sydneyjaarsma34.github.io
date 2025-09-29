@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Service</title>
+</head>
+<body>
+    <nav class="main-nav">
+        <h1 class="nav-brand">Kappa Kappa Psi Hub</h1>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+            <span>☰</span>
+            <span></span>
+            <span></span>
+        </button>
+        <section class="nav-menu">
+            <a href="home.html" class="epicButton">Home</a>
+            <a href="service.html" class="epicButton">Service</a>
+            <a href="events.html" class="epicButton">Events</a>
+            <a href="documents.html" class="epicButton">Documents</a>
+        </section>
+    </nav>
+
+    <h1>Service</h1>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Concert Band Reception</h2>
+                <button aria-label="click to sign up" onclick="window.location.href='https://drive.google.com/'">Click to Sign Up!</button>
+            </div>
+            <div class="card-content">
+                <p>Help set up concert stage and serve reception snacks after the performance.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2>Transporting Water for Marching Band</h2>
+                <button aria-label="click to sign up" onclick="window.location.href='https://drive.google.com/'">Click to Sign Up!</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Help Dr. Sorey transport water bottles and jugs to Folsom Field for football games.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Ensemble Set Ups</h2>
+                <button aria-label="click to sign up" onclick="window.location.href='https://drive.google.com/'">Click to Sign Up!</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Help set up the music halls in IMIG for ensemble rehearsals every Tuesday and Thursday.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Post Game Clean Up</h2>
+                <button aria-label="click to sign up" onclick="window.location.href='https://drive.google.com/'">Click to Sign Up!</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Help pick up trash and clean the floors of IMIG after home football games.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Practice Room Cleaning</h2>
+                <button aria-label="click to sign up" onclick="window.location.href='https://drive.google.com/'">Click to Sign Up!</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Help polish up the IMIG practice rooms for music majors and non-music majors.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Instrument Relabeling</h2>
+                <button aria-label="click to sign up" onclick="window.location.href='https://drive.google.com/'">Click to Sign Up!</button>
+            </div>
+            <div class="card-content">
+                <p class="summary">Help the college of music TAs relabel the instruments for the upcoming semester.</p>
+            </div>
+        </div>
+
+
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // Toggle menu to spead its legs and close them on button click
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        //close menu if you click outside of it
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+            navMenu.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
