@@ -1,0 +1,201 @@
+.events_layout{
+    display: grid; 
+    grid-template-areas: 
+        "header header"
+        "nav nav"
+        "main sidebar"
+    ;
+    gap: 1rem;
+}
+.event{
+    text-align: center;
+    border: 2px solid black;
+    height: 100px;
+    width: 250px;
+    margin: 1rem;
+}
+#recruitment{background-color: rgb(244, 196, 255);}
+#service{background-color: rgb(178, 177, 255);}
+#social{background-color: rgb(255, 214, 192);}
+#fundraising{background-color: greenyellow;}
+.header{
+    grid-area: header;
+}
+.events_calendar{
+    grid-area: main;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.events-nav{
+    grid-area: nav;
+    text-align: center;
+}
+.events-sidebar{
+    grid-area: sidebar;
+}
+.home_page{
+    display: grid;
+    grid-template-areas: 
+        "main-nav main-nav"
+        "about mission_statement"
+    ;
+    gap: 1rem;
+}
+.epicButton{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #1000a5;
+    color: white;
+    margin: 10px 0px;
+    cursor: pointer; /* makes the cursor change to the pointer thingy*/
+    display: inline-block;
+    border-radius: 8px;
+    padding: 12px 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1 1 200px;          /* ← grow | shrink | basis (min-width) */
+    text-align: center;
+}
+.epicButton:hover{
+    background-color: #0b006e;
+}
+
+.nav-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;           /* ← Allows cards to wrap to new rows */   
+    padding: 1.5rem;
+    gap: 1.5rem; 
+}
+.main-nav{
+    grid-area: main-nav;
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #c6dfff;
+    padding: 1.5rem;
+}
+
+.nav-toggle{
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+    border-radius: 10%; /*50% makes a cirlce*/
+    border: none;
+    background-color: #1000a5;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+    border-radius: 10%; /*50% makes a cirlce*/
+    border: none;
+    background-color: #1000a5;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .nav-menu{
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;           /* Allows cards to wrap to new rows */   
+    padding: 1.5rem;
+    gap: 1.5rem; 
+    width: 100%; 
+    }
+    .nav-menu.show {
+    display: flex;
+  }
+}
+.nav-toggle:hover {
+    background-color: #0b006e;
+    color: white;
+    transform: scale(1.1);
+}
+
+.nav-toggle:active {
+    transform: scale(0.95);
+}
+
+h1{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+
+p{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    max-width: 800px;   
+    margin: auto;     
+    line-height: 1.6;  
+    padding: 1rem;
+}
+
+button {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    background-color: #002e77;
+    color: white;
+    border: none;
+    padding: 12px 24px;     /* size inside */
+    min-width: 200px;       /* makes all buttons the same width */
+    text-align: center;     /* text centered */
+}
+
+
+button:hover{
+    background-color: #ffee00;
+    color: black;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+    flex-wrap: wrap;           /* ← Allows cards to wrap to new rows */
+    gap: 1.5rem;              /* ← Consistent spacing between cards */
+    padding: 2rem;
+    background: #002e77;
+}
+
+.card {
+    flex: 1 1 500px;          /* ← grow | shrink | basis (min-width) */
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.card p {
+    margin-bottom: 0;
+    color: #666;
+    line-height: 1.5;
+    text-align: left;
+}
