@@ -199,3 +199,35 @@ button:hover{
     line-height: 1.5;
     text-align: left;
 }
+.light{
+    background-color: white;
+}
+.dark{
+    background-color: black;
+    color: white;
+    .nav-brand{
+        color: black;
+    }
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #c6dfff;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+footer p.privacy {
+    max-width: 90%;                  /* wider text motherfucker */
+    text-align: left;          
+}
+body::after {
+    content: "";
+    display: block;
+    height: 80px;
+}
