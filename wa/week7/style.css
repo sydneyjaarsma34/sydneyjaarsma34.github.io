@@ -221,13 +221,13 @@ footer {
     align-items: center;
     padding: 10px 20px;
     z-index: 1000;
+    height: 60px;
 }
 footer p.privacy {
     max-width: 90%;                  /* wider text motherfucker */
-    text-align: left;          
+    text-align: left; 
+    margin: 1rem;         
 }
 body::after {
-    content: "";
-    display: block;
-    height: 80px;
+    height: 60px;
 }
