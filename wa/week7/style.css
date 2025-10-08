@@ -229,11 +229,39 @@ footer {
     z-index: 1000;
     height: 60px;
 }
-footer p.privacy {
+footer p.privacyFull {
     max-width: 90%;                  /* wider text motherfucker */
     text-align: left; 
     margin: 1rem;         
 }
 body::after {
     height: 60px;
+}
+footer p.privacyShort {
+    display: none;
+}
+footer p.privacyMobile{
+    display: none;
+}
+
+/* On smaller screens, hide full text and show short version */
+@media (max-width: 1324px) {
+    footer p.privacyFull {
+        display: none;
+    }
+    footer p.privacyShort {
+        display: inline;
+    }
+    footer p.privacyMobile{
+        display: none;
+    }
+}
+@media (max-width: 475px) {
+    footer p.privacyShort,
+    footer p.privacyFull {
+        display: none;
+    }
+    footer p.privacyMobile {
+        display: inline;
+    }
 }
