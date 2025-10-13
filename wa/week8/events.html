@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Events</title>
+</head>
+<body>
+    <nav class="main-nav">
+        <h1 class="nav-brand">Kappa Kappa Psi Hub</h1>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+            <span>☰</span>
+            <span></span>
+            <span></span>
+        </button>
+        <section class="nav-menu">
+            <a href="home.html" class="epicButton">Home</a>
+            <a href="service.html" class="epicButton">Service</a>
+            <a href="events.html" class="epicButton">Events</a>
+            <a href="documents.html" class="epicButton">Documents</a>
+        </section>
+    </nav>
+
+
+
+    <h1 class="header">Events</h1>
+    <div class="events_layout">
+        <nav class="events-nav">
+            <button>All</button>
+            <button>Recruitment</button>
+            <button>Service</button>
+            <button>Social</button>
+            <button>Fundraising</button>
+        </nav>
+        <main class="events_calendar">
+            <div class="event" id="recruitment" data-category="recruitment"><h2>Sept 30</h2>Yard Games on Farrand Field</div>
+            <div class="event" id="recruitment" data-category="recruitment"><h2>Oct 2</h2>Info Night in E160</div>
+            <div class="event" id="recruitment" data-category="recruitment"><h2>Oct 3</h2>Ice Cream and Crafts</div>
+            <div class="event" id="social" data-category="social"><h2>Oct 4</h2>Join us for pizza and games!</div>
+            <div class="event" id="recruitment" data-category="recruitment"><h2>Oct 6</h2>Dinner and Name that Tune!</div>
+            <div class="event" id="fundraising" data-category="fundraising"><h2>Oct 7</h2>Kappa Kappa Pie Fundraiser</div>
+            <div class="event" id="service" data-category="service"><h2>Oct 8</h2>Practice Room Cleaning</div>
+            <div class="event" id="service" data-category="service"><h2>Oct 12</h2>Band Banquet</div>
+        </main>
+        <aside class="events-sidebar" style="text-align: left;"><p>Filter Options </p><p id="event-counter"></p></aside>
+    </div>
+
+    <script src="script.js" defer>
+        const filterButtons = document.querySelectorAll('.events-nav button');
+        const photoCards = document.querySelectorAll('.event');
+        const counter = document.getElementById('event-counter');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+            const filterValue = event.target.textContent.toLowerCase();
+            filterPhotos(filterValue);
+            });
+        });
+        function filterPhotos(filterValue) {
+            let visibleCount = 0;
+
+            photoCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+
+                if (filterValue === 'all' || category === filterValue) {
+                    card.style.display = 'block'; 
+                    visibleCount++; // count visible cards
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // update counter text
+            counter.textContent = `Showing ${visibleCount} events`;
+        } 
+        // initialize counter on page load
+        filterPhotos('all');
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // toggle menu to spread its legs and close them on button click
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        //close menu if you click outside of it
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+            navMenu.classList.remove('show');
+            }
+         });
+    </script>
+</body>
+</html>
