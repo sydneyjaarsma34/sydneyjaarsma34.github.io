@@ -6,6 +6,7 @@ let current = {
 
 const endpoint = "https://api.breakingbadquotes.xyz/v1/quotes";
 
+
 async function newTrivia(){
     // console.log("Success")
 
