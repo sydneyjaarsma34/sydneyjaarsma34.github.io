@@ -99,6 +99,9 @@ html {
     .app {
       width: 100%;
     }
+    .reflection{
+      width: 100%;
+    }
     .quote-text {
       font-size: 18px;
     }
