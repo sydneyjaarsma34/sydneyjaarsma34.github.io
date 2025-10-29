@@ -4,7 +4,7 @@ let current = {
     question: ""
 }
 
-const endpoint = "https://api.chucknorris.io/jokes/random";
+const endpoint = "https://api.breakingbadquotes.xyz/v1/quotes";
 
 async function newTrivia(){
     // console.log("Success")
@@ -23,8 +23,8 @@ async function newTrivia(){
         }
         const json = await response.json();
         // console.log(json);
-        displayTrivia(json["value"])
-        current.question = json["value"];
+        displayTrivia(json[0].quote)
+        current.question = json[0].quote;
         // console.log(current.question);
         // console.log(current.answer);
     }
@@ -40,7 +40,7 @@ async function newTrivia(){
 
 function displayTrivia(question){
     setTimeout(() => {
-       const questionText = document.querySelector('#js-quote-text');
+        const questionText = document.querySelector('#js-quote-text');
         questionText.textContent = question;
     }, 500); // this adds the delay so it looks like it's actually loading pt 2 (electric boogaloo)
     
