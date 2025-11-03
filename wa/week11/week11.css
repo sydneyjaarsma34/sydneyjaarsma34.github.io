@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 20px;
   }
-  h1 { text-align: center; color: #7dd3fc; }
+  h1 { text-align: center; color: #fc7df1; }
   #search-area { text-align: center; margin: 20px 0; }
   input, button {
     padding: 8px 10px;
@@ -66,6 +66,6 @@ body {
   }
   #notice {
     font-size: 13px;
-    color: #9aa6b2;
+    color: #b29aaa;
     margin-top: 15px;
   }
