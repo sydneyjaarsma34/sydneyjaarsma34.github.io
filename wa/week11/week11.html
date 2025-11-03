@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search (OMDb API)</title>
+    <link rel="stylesheet" href="week11.css">
+</head>
+<body>
+    <h1>Movie Search</h1>
+
+    <div id="settings">
+    <!-- aparently I need this to access the api which is stupid -->
+    <input type="text" id="apiKey" placeholder="Enter your OMDb API key" />
+    <button id="saveKey">Save Key</button>
+    <button id="clearKey">Clear Key</button>
+    </div>
+
+    <div id="search-area">
+    <input type="text" id="search" placeholder="Search for a movie..." />
+    <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="error-msg"></div>
+    <div id="results"></div>
+
+    <div id="favorites">
+    <h2>My Favorites List</h2>
+    <div id="favList"></div>
+    <!-- this button doesn't actually do anything --- whoopsie -->
+    <button id="exportFavs">Export</button>
+    <button id="clearFavs">Clear List</button>
+    <div id="notice">
+        Favorites and API key are stored only in your local storage.
+    </div>
+    </div>
+
+
+<script src="week11.js"></script> 
+
+</body>
+</html>
