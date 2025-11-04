@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"> </script>
+     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box> -->
+      <a-sphere position="0 1.25 -4" radius="1.25" color="#FFFFFF"></a-sphere>
+       <a-sphere position="0 3 -4" radius="1" color="#FFFFFF"></a-sphere>
+        <a-sphere position="0 4.5 -4" radius=".75" color="#FFFFFF"></a-sphere>
+      <!-- hat -->
+      <a-cylinder position="0 5 -4" radius="1" height=".15" color="#000000"></a-cylinder>
+      <a-cylinder position="0 5.5 -4" radius=".75" height="1" color="#000000"></a-cylinder>
+      <!--eyes-->
+      <a-sphere position="-.25 4.4 -3.25" radius=".1" color="#000000"></a-sphere>
+      <a-sphere position=".25 4.4 -3.25" radius=".1" color="#000000"></a-sphere>
+      <!--Buttons-->
+      <a-sphere position="0 3 -3" radius=".1" color="#000000"></a-sphere>
+      <a-sphere position="0 3.45 -3.1" radius=".1" color="#000000"></a-sphere>
+      <a-sphere position="0 2.55 -3.1" radius=".1" color="#000000"></a-sphere>
+      <!--nose-->
+      <a-cone position="0 4.3 -3.2" radius-bottom=".15" radius-top="0" height=".5" rotation= "90 0 0" color="orange"></a-cone>
+
+
+      <a-plane position="0 .1 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <!-- <a-sky color="#ECECEC"></a-sky> -->
+      <!-- the enviroment entity includes a sky. Choose from the presets"none, default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine, threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris, moon" -->
+      <a-entity environment="preset: tron; dressingAmount: 500"></a-entity>
+    </a-scene>
+  </body>
+</html>
