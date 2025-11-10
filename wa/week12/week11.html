@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search (OMDb API)</title>
+    <link rel="stylesheet" href="week12.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Search</h1>
+    </header>
+
+    <main>
+        <section id="search-area" aria-label="Movie search area">
+            <form id="searchForm" role="search" aria-label="Search for movies">
+                <label for="search">Search for a movie:</label>
+                <input type="text" id="search" name="search" placeholder="Enter a movie title" aria-required="true">
+                <button id="searchBtn" type="button" aria-label="Search for the entered movie">Search</button>
+            </form>
+        </section>
+
+        <section id="results" aria-label="Search results"></section>
+        <section id="favorites" aria-label="Favorites list">
+            <h2>My Favorites List</h2>
+            <div id="favList"></div>
+
+            <div class="fav-buttons">
+                <button id="exportFavs" aria-label="Export favorites list">Export</button>
+                <button id="clearFavs" aria-label="Clear favorites list">Clear List</button>
+            </div>
+
+            <p id="notice">
+                Your favorites list is stored only in your local storage.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>This site for movie searching uses the OMDb API</p>
+    </footer>
+
+    <script src="week12.js"></script> 
+</body>
+</html>
