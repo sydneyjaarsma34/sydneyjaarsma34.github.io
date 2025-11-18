@@ -6,7 +6,7 @@ const results = document.getElementById("results");
 const errorMsg = document.getElementById("error-msg");
 const favList = document.getElementById("favList");
 
-// ---------- FAVORITES ----------
+// the favorites bar
 function getFavs() {
   return JSON.parse(localStorage.getItem("favorites") || "[]");
 }
@@ -50,6 +50,7 @@ function renderFavs() {
   const favs = getFavs();
   favList.innerHTML = favs.length ? "" : "<p class='small'>No favorites yet.</p>";
   favs.forEach(m => {
+    //add a space for each element
     const div = document.createElement("div");
     div.className = "fav-item";
     div.innerHTML = `
@@ -59,7 +60,7 @@ function renderFavs() {
   });
 }
 
-// ---------- SEARCH ----------
+// search function stuff
 async function searchMovies() {
   const query = searchInput.value.trim();
   if (!query) return alert("Enter a movie title!");
@@ -103,10 +104,10 @@ async function renderResults(list) {
   }
 }
 
-// ---------- BUTTON HOOKUPS ----------
+//make the buttons work and stuff
 document.getElementById("searchBtn").onclick = searchMovies;
 document.getElementById("clearFavs").onclick = clearFavs;
 document.getElementById("exportFavs").onclick = exportFavs;
 
-// ---------- INITIAL RENDER ----------
+// start with the favorites loaded
 renderFavs();
