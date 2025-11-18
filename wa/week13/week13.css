@@ -42,7 +42,7 @@ body {
     margin-top: 30px;
     background: #21091c;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 1px;
   }
   .fav-item {
     display: flex;
