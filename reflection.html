@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Law of Reflection Simulation</title>
+
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #eeeeee;
+    }
+    canvas {
+        background-color: white;
+        border: 3px solid black;
+        margin-top: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Law of Reflection (Plane Mirror)</h2>
+<p>Angle of Incidence = Angle of Reflection</p>
+
+<canvas id="canvas" width="800" height="400"></canvas><br><br>
+
+Angle of Incidence:
+<input type="range" id="angle" min="0" max="90" value="30">
+<span id="angleValue">30°</span>
+
+<script>
+window.onload = function () {
+
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const slider = document.getElementById("angle");
+    const angleValue = document.getElementById("angleValue");
+
+    const mirrorX = 400;
+    const centerY = 200;
+
+    function draw(angleDeg) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Clamp angle slightly to avoid drawing issues at 90°
+        const angle = Math.min(angleDeg, 89.9) * Math.PI / 180;
+        const rayLength = 260;
+
+        // Debug text (confirms canvas is working)
+        ctx.fillStyle = "black";
+        ctx.font = "18px Arial";
+        ctx.fillText("Canvas is working", 20, 30);
+
+        /* ---- Mirror ---- */
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.moveTo(mirrorX, 50);
+        ctx.lineTo(mirrorX, 350);
+        ctx.stroke();
+
+        /* ---- Normal ---- */
+        ctx.setLineDash([10, 10]);
+        ctx.strokeStyle = "purple";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(mirrorX - 350, centerY);
+        ctx.lineTo(mirrorX + 350, centerY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        /* ---- Incident Ray ---- */
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(
+            mirrorX - rayLength * Math.cos(angle),
+            centerY - rayLength * Math.sin(angle)
+        );
+        ctx.lineTo(mirrorX, centerY);
+        ctx.stroke();
+
+        /* ---- Reflected Ray ---- */
+        ctx.strokeStyle = "blue";
+        ctx.beginPath();
+        ctx.moveTo(mirrorX, centerY);
+        ctx.lineTo(
+            mirrorX + rayLength * Math.cos(angle),
+            centerY - rayLength * Math.sin(angle)
+        );
+        ctx.stroke();
+
+        /* ---- Angle Arc (Incident) ---- */
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(mirrorX, centerY, 70, Math.PI, Math.PI - angle);
+        ctx.stroke();
+
+        /* ---- Angle Arc (Reflected) ---- */
+        ctx.beginPath();
+        ctx.arc(mirrorX, centerY, 70, 0, angle);
+        ctx.stroke();
+
+        /* ---- Labels ---- */
+        ctx.fillStyle = "black";
+        ctx.font = "16px Arial";
+        ctx.fillText("θᵢ", mirrorX - 55, centerY - 35);
+        ctx.fillText("θᵣ", mirrorX + 30, centerY - 35);
+        ctx.fillText("Mirror", mirrorX - 30, 45);
+        ctx.fillText("Normal", mirrorX + 10, centerY - 10);
+    }
+
+    // Initial draw
+    draw(slider.value);
+
+    // Slider interaction
+    slider.oninput = function () {
+        angleValue.textContent = this.value + "°";
+        draw(this.value);
+    };
+};
+</script>
+
+</body>
+</html>
