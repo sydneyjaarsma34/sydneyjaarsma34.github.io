@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reflection & Refraction Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+    }
+
+    canvas {
+      background: white;
+      border: 1px solid #333;
+      margin-top: 20px;
+    }
+
+    .controls, .legend {
+      margin-top: 20px;
+      width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      background: #fff;
+      padding: 12px;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .value {
+      font-weight: normal;
+      margin-left: 10px;
+    }
+
+    .legend div {
+      margin: 6px 0;
+    }
+
+    .color-box {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Law of Reflection & Refraction</h2>
+<p>All angles are measured from the normal</p>
+
+<canvas id="canvas" width="500" height="320"></canvas>
+
+<div class="controls">
+  <label>
+    Incident Angle (degrees)
+    <input type="range" id="angleSlider" min="0" max="90" value="30">
+    <span class="value" id="angleValue">30°</span>
+  </label>
+
+  <label>
+    Refractive Index of Medium 2 (n₂)
+    <input type="range" id="n2Slider" min="1.0" max="2.5" step="0.01" value="1.5">
+    <span class="value" id="n2Value">1.50</span>
+  </label>
+</div>
+
+<div class="legend">
+  <strong>Key</strong>
+  <div><span class="color-box" style="background:green"></span>Incident Ray (θᵢ)</div>
+  <div><span class="color-box" style="background:red"></span>Reflected Ray (θᵣ = θᵢ)</div>
+  <div><span class="color-box" style="background:blue"></span>Refracted Ray (θ₂)</div>
+  <div><span class="color-box" style="background:gray"></span>Normal</div>
+</div>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const angleSlider = document.getElementById("angleSlider");
+const n2Slider = document.getElementById("n2Slider");
+const angleValue = document.getElementById("angleValue");
+const n2Value = document.getElementById("n2Value");
+
+const n1 = 1.0;
+const cx = canvas.width / 2;
+const cy = canvas.height / 2;
+const rayLength = 160;
+
+function drawArc(start, end, r, color) {
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, start, end);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Media
+  ctx.fillStyle = "#e3f2fd";
+  ctx.fillRect(0, 0, canvas.width, cy);
+  ctx.fillStyle = "#ffe0b2";
+  ctx.fillRect(0, cy, canvas.width, cy);
+
+  // Boundary
+  ctx.beginPath();
+  ctx.moveTo(0, cy);
+  ctx.lineTo(canvas.width, cy);
+  ctx.strokeStyle = "black";
+  ctx.stroke();
+
+  // Normal
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - 90);
+  ctx.lineTo(cx, cy + 90);
+  ctx.setLineDash([5, 5]);
+  ctx.strokeStyle = "gray";
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  const theta1 = angleSlider.value * Math.PI / 180;
+  const n2 = parseFloat(n2Slider.value);
+
+  angleValue.textContent = angleSlider.value + "°";
+  n2Value.textContent = n2.toFixed(2);
+
+  // Incident ray (GREEN)
+  ctx.beginPath();
+  ctx.moveTo(
+    cx - rayLength * Math.sin(theta1),
+    cy - rayLength * Math.cos(theta1)
+  );
+  ctx.lineTo(cx, cy);
+  ctx.strokeStyle = "green";
+  ctx.stroke();
+
+  // Reflected ray (RED)
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(
+    cx + rayLength * Math.sin(theta1),
+    cy - rayLength * Math.cos(theta1)
+  );
+  ctx.strokeStyle = "red";
+  ctx.stroke();
+
+    // Angle arcs (both from the normal)
+    drawArc(-Math.PI / 2, -Math.PI / 2 + theta1, 40, "red"); // θi
+    drawArc(-Math.PI / 2 - theta1, -Math.PI / 2, 50, "green");  // θr
+
+  // Refraction
+  const sinTheta2 = (n1 / n2) * Math.sin(theta1);
+
+  if (sinTheta2 <= 1) {
+    const theta2 = Math.asin(sinTheta2);
+
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(
+      cx + rayLength * Math.sin(theta2),
+      cy + rayLength * Math.cos(theta2)
+    );
+    ctx.strokeStyle = "blue";
+    ctx.stroke();
+
+    drawArc(Math.PI / 2 - theta2, Math.PI / 2, 45, "blue"); // θ2
+  }
+}
+
+angleSlider.addEventListener("input", draw);
+n2Slider.addEventListener("input", draw);
+draw();
+</script>
+
+</body>
+</html>
