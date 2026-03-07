@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rainbow Droplet Refraction & Reflection</title>
+<style>
+  body { background:#eef; text-align:center; font-family:Arial; }
+  canvas { background:white; border:2px solid black; }
+</style>
+</head>
+<body>
+
+<h2>Rainbow Formation in a Single Water Droplet</h2>
+<p>Light refracts, reflects inside, and refracts again. Colors separate due to dispersion.</p>
+
+<canvas id="c" width="900" height="600"></canvas>
+
+<script>
+const c = document.getElementById("c");
+const ctx = c.getContext("2d");
+
+// Positions
+const sun = {x: 150, y: 150};
+const droplet = {x: 450, y: 300, r: 100};
+const observer = {x: 800, y: 350};
+
+// Refractive indices for colors (approx)
+const colors = [
+  {name:"Red", n:1.331, color:"red"},
+  {name:"Orange", n:1.333, color:"orange"},
+  {name:"Yellow", n:1.335, color:"yellow"},
+  {name:"Green", n:1.337, color:"green"},
+  {name:"Blue", n:1.339, color:"blue"},
+  {name:"Violet", n:1.343, color:"violet"}
+];
+
+// Draw droplet
+ctx.strokeStyle="blue";
+ctx.beginPath();
+ctx.arc(droplet.x, droplet.y, droplet.r, 0, Math.PI*2);
+ctx.stroke();
+ctx.fillText("Water Droplet", droplet.x-50, droplet.y+droplet.r+20);
+
+// Draw Sun
+ctx.fillStyle="orange";
+ctx.beginPath();
+ctx.arc(sun.x, sun.y, 30, 0, Math.PI*2);
+ctx.fill();
+ctx.fillText("Sun", sun.x-15, sun.y-40);
+
+// Draw Observer
+ctx.fillStyle="black";
+ctx.beginPath();
+ctx.arc(observer.x, observer.y, 10, 0, Math.PI*2);
+ctx.fill();
+ctx.fillText("You", observer.x-10, observer.y+25);
+
+// Function to draw rays
+function drawRay(x1,y1,x2,y2,color) {
+  ctx.strokeStyle=color;
+  ctx.beginPath();
+  ctx.moveTo(x1,y1);
+  ctx.lineTo(x2,y2);
+  ctx.stroke();
+}
+
+// Entry point on droplet
+const entry = {x: droplet.x - droplet.r * 0.6, y: droplet.y - droplet.r * 0.6};
+const internal = {x: droplet.x + droplet.r * 0.4, y: droplet.y - droplet.r * 0.1};
+const exit = {x: droplet.x - droplet.r * 0.3, y: droplet.y + droplet.r * 0.7};
+
+// Draw each color ray
+colors.forEach((cData, i) => {
+  const offset = i * 2;
+
+  // Sun → droplet (incident ray)
+  drawRay(sun.x, sun.y, entry.x, entry.y + offset, cData.color);
+
+  // Inside droplet (refraction to internal reflection point)
+  drawRay(entry.x, entry.y + offset, internal.x, internal.y + offset, cData.color);
+
+  // Internal reflection bounce
+  drawRay(internal.x, internal.y + offset, exit.x, exit.y + offset, cData.color);
+
+  // Exit toward observer (rainbow ray)
+  drawRay(exit.x, exit.y + offset, observer.x, observer.y + offset, cData.color);
+});
+
+// Labels
+ctx.fillStyle="black";
+ctx.fillText("Refraction In", entry.x-90, entry.y-10);
+ctx.fillText("Internal Reflection", internal.x+10, internal.y-10);
+ctx.fillText("Refraction Out", exit.x-80, exit.y+20);
+ctx.fillText("Separated Colors → Rainbow", observer.x-180, observer.y-20);
+</script>
+
+</body>
+</html>
