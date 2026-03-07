@@ -1,0 +1,49 @@
+body{
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+margin:40px;
+}
+
+.eq{
+display:flex;
+justify-content:center;
+gap:40px;
+margin:30px;
+}
+
+input[type=range]{
+writing-mode: bt-lr;
+-webkit-appearance: slider-vertical;
+height:200px;
+}
+
+.presets button{
+margin:10px;
+padding:10px 20px;
+background:#333;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.presets button:hover{
+background:#555;
+}
+
+canvas{
+max-width:600px;
+margin:auto;
+}
+
+#profile{
+margin-top:20px;
+background:#1e1e1e;
+padding:20px;
+border-radius:8px;
+max-width:500px;
+margin-left:auto;
+margin-right:auto;
+}

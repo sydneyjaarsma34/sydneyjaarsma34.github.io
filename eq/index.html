@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>EDU-EQ</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<h1>🎧 EDU-EQ</h1>
+<p>Discover your ideal sound profile</p>
+
+<div class="player">
+
+<select id="songSelect">
+<option value="songs/rock.mp3">Rock</option>
+<option value="songs/pop.mp3">Pop</option>
+<option value="songs/jazz.mp3">Jazz</option>
+<option value="songs/classical.mp3">Classical</option>
+</select>
+
+<audio id="audio" controls></audio>
+
+</div>
+
+<h2>Equalizer</h2>
+
+<div class="eq">
+
+<div>
+<label>Sub</label>
+<input type="range" min="-20" max="20" value="0" id="sub">
+</div>
+
+<div>
+<label>Bass</label>
+<input type="range" min="-20" max="20" value="0" id="bass">
+</div>
+
+<div>
+<label>Mid</label>
+<input type="range" min="-20" max="20" value="0" id="mid">
+</div>
+
+<div>
+<label>High Mid</label>
+<input type="range" min="-20" max="20" value="0" id="highmid">
+</div>
+
+<div>
+<label>Treble</label>
+<input type="range" min="-20" max="20" value="0" id="treble">
+</div>
+
+</div>
+
+<h2>EQ Curve</h2>
+
+<canvas id="eqChart"></canvas>
+
+<h2>Presets</h2>
+
+<div class="presets">
+
+<button onclick="setPreset('flat')">Flat</button>
+<button onclick="setPreset('rock')">Rock</button>
+<button onclick="setPreset('edm')">EDM</button>
+<button onclick="setPreset('vocal')">Vocal Boost</button>
+
+</div>
+
+<h2>Your Sound Profile</h2>
+
+<div id="profile">
+Adjust sliders to discover your sound preferences.
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
